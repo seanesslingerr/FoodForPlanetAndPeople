@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Protein sources</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400;1,7..72,600&family=Public+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="guide-main">
+  <header class="guide-header">
+    <p class="step">Protein sources</p>
+    <h1>Explore each protein source.</h1>
+    <p class="lede">Scroll through the sources from the game. Information will be added here soon.</p>
+    <div class="actions"><a class="ghost button-link" href="index.html">Back to start</a></div>
+  </header>
+
+  <nav class="progress" aria-label="Protein source progress">
+    <div class="progress-track">
+      <button type="button" data-target="beef" aria-label="Go to Beef"></button>
+      <button type="button" data-target="cheese" aria-label="Go to Cheese"></button>
+      <button type="button" data-target="pork" aria-label="Go to Pork"></button>
+      <button type="button" data-target="chicken" aria-label="Go to Chicken"></button>
+      <button type="button" data-target="eggs" aria-label="Go to Eggs"></button>
+      <button type="button" data-target="tofu" aria-label="Go to Tofu"></button>
+      <button type="button" data-target="peas" aria-label="Go to Peas"></button>
+      <button type="button" data-target="nuts" aria-label="Go to Nuts"></button>
+    </div>
+    <div class="progress-labels" aria-hidden="true">
+      <span>Beef</span><span>Cheese</span><span>Pork</span><span>Chicken</span>
+      <span>Eggs</span><span>Tofu</span><span>Peas</span><span>Nuts</span>
+    </div>
+  </nav>
+
+  <section class="protein-section" id="beef"><h2>Beef</h2><div class="info-placeholder"></div></section>
+  <section class="protein-section" id="cheese"><h2>Cheese</h2><div class="info-placeholder"></div></section>
+  <section class="protein-section" id="pork"><h2>Pork</h2><div class="info-placeholder"></div></section>
+  <section class="protein-section" id="chicken"><h2>Chicken</h2><div class="info-placeholder"></div></section>
+  <section class="protein-section" id="eggs"><h2>Eggs</h2><div class="info-placeholder"></div></section>
+  <section class="protein-section" id="tofu"><h2>Tofu</h2><div class="info-placeholder"></div></section>
+  <section class="protein-section" id="peas"><h2>Peas</h2><div class="info-placeholder"></div></section>
+  <section class="protein-section" id="nuts"><h2>Nuts</h2><div class="info-placeholder"></div></section>
+</main>
+<script src="info.js"></script>
+</body>
+</html>
