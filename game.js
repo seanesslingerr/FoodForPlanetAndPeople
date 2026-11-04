@@ -50,6 +50,11 @@ function syncW(){ const w=1-$("w").value/100; st.w=w; $("pq").textContent=pct(w)
 $("w").addEventListener("input",syncW);
 $("lock").addEventListener("click",()=>{
   st.picks=[]; st.pool=shuffle(DATA.map(x=>x.name));
+  localStorage.setItem("proteinProfile", JSON.stringify({
+    weight:st.w,
+    planetScore:Math.round((1-st.w)*100),
+    completed:false
+  }));
   $("mypri").innerHTML=`Your priorities: <b class="q">${pct(st.w)} protein quality</b> | <b class="e">${pct(1-st.w)} planet</b>`;
   renderRank(); show("s2");
 });
@@ -91,6 +96,12 @@ $("submit").onclick=()=>{ reveal(); show("s3"); };
 /* step 3 */
 function reveal(){
   const actual = ranked(st.w).map(x=>x.name);
+  localStorage.setItem("proteinProfile", JSON.stringify({
+    weight:st.w,
+    planetScore:Math.round((1-st.w)*100),
+    ranking:actual,
+    completed:true
+  }));
   const diffs = DATA.map(x=>({name:x.name, you:st.picks.indexOf(x.name), real:actual.indexOf(x.name)}));
   const exact = diffs.filter(d=>d.you===d.real).length;
   const avg = diffs.reduce((a,d)=>a+Math.abs(d.you-d.real),0)/diffs.length;

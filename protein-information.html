@@ -35,14 +35,25 @@
     </div>
   </nav>
 
-  <section class="protein-section" id="beef"><h2>Beef</h2><div class="info-placeholder"></div></section>
-  <section class="protein-section" id="cheese"><h2>Cheese</h2><div class="info-placeholder"></div></section>
-  <section class="protein-section" id="pork"><h2>Pork</h2><div class="info-placeholder"></div></section>
-  <section class="protein-section" id="chicken"><h2>Chicken</h2><div class="info-placeholder"></div></section>
-  <section class="protein-section" id="eggs"><h2>Eggs</h2><div class="info-placeholder"></div></section>
-  <section class="protein-section" id="tofu"><h2>Tofu</h2><div class="info-placeholder"></div></section>
-  <section class="protein-section" id="peas"><h2>Peas</h2><div class="info-placeholder"></div></section>
-  <section class="protein-section" id="nuts"><h2>Nuts</h2><div class="info-placeholder"></div></section>
+  <section class="protein-section" id="beef" data-protein="Beef"><h2>Beef</h2><div class="info-placeholder"></div><div class="choice"><h3>Would you make this change?</h3><div class="choice-actions"><button class="ghost" data-choice="yes">Yes, I would</button><button class="ghost" data-choice="already">I already do</button><button class="ghost" data-choice="no">No</button></div><p class="choice-status" aria-live="polite"></p></div></section>
+  <section class="protein-section" id="cheese" data-protein="Cheese"><h2>Cheese</h2><div class="info-placeholder"></div><div class="choice"><h3>Would you make this change?</h3><div class="choice-actions"><button class="ghost" data-choice="yes">Yes, I would</button><button class="ghost" data-choice="already">I already do</button><button class="ghost" data-choice="no">No</button></div><p class="choice-status" aria-live="polite"></p></div></section>
+  <section class="protein-section" id="pork" data-protein="Pork"><h2>Pork</h2><div class="info-placeholder"></div><div class="choice"><h3>Would you make this change?</h3><div class="choice-actions"><button class="ghost" data-choice="yes">Yes, I would</button><button class="ghost" data-choice="already">I already do</button><button class="ghost" data-choice="no">No</button></div><p class="choice-status" aria-live="polite"></p></div></section>
+  <section class="protein-section" id="chicken" data-protein="Chicken"><h2>Chicken</h2><div class="info-placeholder"></div><div class="choice"><h3>Would you make this change?</h3><div class="choice-actions"><button class="ghost" data-choice="yes">Yes, I would</button><button class="ghost" data-choice="already">I already do</button><button class="ghost" data-choice="no">No</button></div><p class="choice-status" aria-live="polite"></p></div></section>
+  <section class="protein-section" id="eggs" data-protein="Eggs"><h2>Eggs</h2><div class="info-placeholder"></div><div class="choice"><h3>Would you make this change?</h3><div class="choice-actions"><button class="ghost" data-choice="yes">Yes, I would</button><button class="ghost" data-choice="already">I already do</button><button class="ghost" data-choice="no">No</button></div><p class="choice-status" aria-live="polite"></p></div></section>
+  <section class="protein-section" id="tofu" data-protein="Tofu"><h2>Tofu</h2><div class="info-placeholder"></div><div class="choice"><h3>Would you make this change?</h3><div class="choice-actions"><button class="ghost" data-choice="yes">Yes, I would</button><button class="ghost" data-choice="already">I already do</button><button class="ghost" data-choice="no">No</button></div><p class="choice-status" aria-live="polite"></p></div></section>
+  <section class="protein-section" id="peas" data-protein="Peas"><h2>Peas</h2><div class="info-placeholder"></div><div class="choice"><h3>Would you make this change?</h3><div class="choice-actions"><button class="ghost" data-choice="yes">Yes, I would</button><button class="ghost" data-choice="already">I already do</button><button class="ghost" data-choice="no">No</button></div><p class="choice-status" aria-live="polite"></p></div></section>
+  <section class="protein-section" id="nuts" data-protein="Nuts"><h2>Nuts</h2><div class="info-placeholder"></div><div class="choice"><h3>Would you make this change?</h3><div class="choice-actions"><button class="ghost" data-choice="yes">Yes, I would</button><button class="ghost" data-choice="already">I already do</button><button class="ghost" data-choice="no">No</button></div><p class="choice-status" aria-live="polite"></p></div></section>
+  <section class="review-section" id="review">
+    <p class="step">Your profile</p>
+    <h2>Review your changes</h2>
+    <p class="lede">Your planet score starts with your game preference. Each choice updates your score.</p>
+    <div class="review-scores">
+      <div class="review-score"><span id="planet-score">0%</span><small>planet score</small></div>
+      <div class="review-score"><span id="protein-score">100%</span><small>protein score</small></div>
+    </div>
+    <ol class="review-list" id="review-list"></ol>
+    <div class="actions"><a class="primary button-link" href="environmental-impacts.html">Continue: environmental impacts</a></div>
+  </section>
 </main>
 <script src="info.js"></script>
 </body>
