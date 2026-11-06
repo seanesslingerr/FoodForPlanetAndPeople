@@ -160,3 +160,11 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
 .pdf-image{margin-top:24px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface)}
 .pdf-image img{display:block;width:100%;height:auto}
 @media (max-width:600px){.environment-labels span{font-size:9px}.environment-section{min-height:360px}}
+.protein-description {
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.5;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  max-width: 750px;
+}
