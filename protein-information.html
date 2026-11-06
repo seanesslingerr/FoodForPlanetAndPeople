@@ -4,18 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Protein sources</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400;1,7..72,600&family=Public+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 <main class="guide-main">
+
   <header class="guide-header">
     <p class="step">Protein sources</p>
     <h1>Explore each protein source.</h1>
-    <p class="lede">Scroll through the sources from the game. Information will be added here soon.</p>
-    <div class="actions"><a class="ghost button-link" href="index.html">Back to start</a></div>
+    <p class="lede">Learn how different protein sources affect the planet.
+      Adjust the sliders to explore an illustrative daily diet
+      and compare estimated greenhouse gas emissions.</p>
+    <div class="actions">
+      <a class="ghost button-link" href="index.html">Back to start</a>
+    </div>
   </header>
 
   <nav class="progress" aria-label="Protein source progress">
@@ -30,17 +37,126 @@
       <button type="button" data-target="nuts" aria-label="Go to Nuts"></button>
     </div>
     <div class="progress-labels" aria-hidden="true">
-      <span>Beef</span><span>Dairy</span><span>Pork</span><span>Chicken</span>
-      <span>Eggs</span><span>Tofu</span><span>Legumes</span><span>Nuts</span>
+      <span>Beef</span>
+      <span>Dairy</span>
+      <span>Pork</span>
+      <span>Chicken</span>
+      <span>Eggs</span>
+      <span>Tofu</span>
+      <span>Legumes</span>
+      <span>Nuts</span>
     </div>
   </nav>
+
+  <section class="sim-overview" id="simulation-overview"
+    aria-labelledby="sim-overview-title">
+    <p class ="step">Simulation</p>
+    <h2 id="sim-overview-title">Your Daily Protein Footprint</h2>
+
+    <p class="lede">
+      Move the sliders below to change the amount of protein you get from that source.
+    </p>
+
+    <div class="sim-compare">
+      <div class="sim-compare-card">
+        <small>Baseline emissions / day</small>
+        <strong id="sim-baseline-emissions">—</strong>
+        <small>kg CO₂e</small>
+      </div>
+      <div class="sim-compare-card">
+        <small>Adjusted emissions / day</small>
+        <strong id="sim-current-emissions" aria-live="polite">—</strong>
+        <small>kg CO₂e</small>
+      </div>
+    </div>
+
+    <div class="sim-impact-bar" role="img"
+         aria-label="Adjusted emissions compared with baseline">
+      <span class="sim-impact-fill" id="sim-total-fill"></span>
+    </div>
+
+    <div class="sim-impact-legend">
+      <span>0</span>
+      <span id="sim-total-scale">Baseline: 100%</span>
+    </div>
+
+    <p class="sim-delta" id="sim-total-delta" aria-live="polite">
+      No change yet
+    </p>
+
+    <div class="sim-impact">
+      <div class="sim-stat">
+        <span>Baseline protein / day</span>
+        <strong>100 g</strong>
+      </div>
+      <div class="sim-stat">
+        <span>Adjusted protein / day</span>
+        <strong id="sim-total-protein">100 g</strong>
+      </div>
+    </div>
+
+    <h3>Current protein mix</h3>
+    <div class="sim-mix" id="sim-mix"></div>
+
+    <div class="sim-actions">
+      <button type="button" class="ghost" id="sim-reset">
+        Reset all sliders
+      </button>
+    </div>
+
+    <p class="sim-note">
+      Illustrative scenario, not a dietary recommendation.
+      Emissions are estimated from category-level averages and protein
+      quantities, not individual food production practices.
+      See the method note below.
+    </p>
+  </section>
 
   <section class="protein-section" id="beef" data-protein="Beef">
     <h2>Beef</h2>
     <p class="protein-description">
       Although beef is a high quality, complete protein, it has one of the highest environmental footprints of any common food source. Cattle produce methane through digestion and require ample land for grazing and feed production. Additionally, waste management also contributes to the environmental impact of cattle. 
     </p>
-    <div class="info-placeholder"></div>
+
+    <div class="sim-panel" data-sim-source="beef">
+      <div class="sim-heading">
+        <h3>Adjust beef consumption</h3>
+        <div class="sim-value">
+          <strong id="sim-value-beef">—</strong>
+          <span>g protein/day</span>
+        </div>
+      </div>
+      <label for="sim-slider-beef" class="small">
+        Daily protein from beef
+      </label>
+      <input id="sim-slider-beef" type="range" min="0" max="60"
+             step="1" data-sim-slider="beef"
+             aria-describedby="sim-footnote-beef">
+      <div class="sim-range-ends">
+        <span>0 g</span><span>60 g</span>
+      </div>
+      <div class="sim-impact">
+        <div class="sim-stat">
+          <span>Baseline emissions/day</span>
+          <strong id="sim-before-beef">—</strong>
+        </div>
+        <div class="sim-stat">
+          <span>Adjusted emissions/day</span>
+          <strong id="sim-after-beef">—</strong>
+        </div>
+      </div>
+      <div class="sim-impact-bar">
+        <span class="sim-impact-fill" id="sim-fill-beef"></span>
+      </div>
+      <p class="sim-delta" id="sim-delta-beef" aria-live="polite">
+        No change
+      </p>
+      <p class="sim-footnote" id="sim-footnote-beef">
+        Estimated kg CO₂e per day, based on grams of protein
+        from this category.
+      </p>
+    </div>
+
     <div class="choice">
       <h3>Would you make this change?</h3>
       <div class="choice-actions">
@@ -51,12 +167,51 @@
       <p class="choice-status" aria-live="polite"></p>
     </div>
   </section>
+
   <section class="protein-section" id="cheese" data-protein="Cheese">
     <h2>Dairy</h2>
     <p class="protein-description">
       Dairy products provide complete protein and calcium with good digestibility. However, due to dairy product's origin (cows), dairy production contributes greatly to greenhouse gas emissions in the same ways as beef. 
     </p>
-    <div class="info-placeholder"></div>
+    <div class="sim-panel" data-sim-source="cheese">
+      <div class="sim-heading">
+        <h3>Adjust dairy consumption</h3>
+        <div class="sim-value">
+          <strong id="sim-value-cheese">—</strong>
+          <span>g protein/day</span>
+        </div>
+      </div>
+      <label for="sim-slider-cheese" class="small">
+        Daily protein from dairy
+      </label>
+      <input id="sim-slider-cheese" type="range" min="0" max="60"
+             step="1" data-sim-slider="cheese"
+             aria-describedby="sim-footnote-cheese">
+      <div class="sim-range-ends">
+        <span>0 g</span><span>60 g</span>
+      </div>
+      <div class="sim-impact">
+        <div class="sim-stat">
+          <span>Baseline emissions/day</span>
+          <strong id="sim-before-cheese">—</strong>
+        </div>
+        <div class="sim-stat">
+          <span>Adjusted emissions/day</span>
+          <strong id="sim-after-cheese">—</strong>
+        </div>
+      </div>
+      <div class="sim-impact-bar">
+        <span class="sim-impact-fill" id="sim-fill-cheese"></span>
+      </div>
+      <p class="sim-delta" id="sim-delta-cheese" aria-live="polite">
+        No change
+      </p>
+      <p class="sim-footnote" id="sim-footnote-cheese">
+        Estimated kg CO₂e per day, based on grams of protein
+        from this category.
+      </p>
+    </div>
+
     <div class="choice">
       <h3>Would you make this change?</h3>
       <div class="choice-actions">
@@ -67,12 +222,52 @@
       <p class="choice-status" aria-live="polite"></p>
     </div>
   </section>
+
   <section class="protein-section" id="pork" data-protein="Pork">
     <h2>Pork</h2>
     <p class="protein-description">
       Pork is a complete protein, but feed production, manure management, and land and water use for pig raising contribute greatly to pork's environmental impact.
     </p>
-    <div class="info-placeholder"></div>
+
+    <div class="sim-panel" data-sim-source="pork">
+      <div class="sim-heading">
+        <h3>Adjust pork consumption</h3>
+        <div class="sim-value">
+          <strong id="sim-value-pork">—</strong>
+          <span>g protein/day</span>
+        </div>
+      </div>
+      <label for="sim-slider-pork" class="small">
+        Daily protein from pork
+      </label>
+      <input id="sim-slider-pork" type="range" min="0" max="60"
+             step="1" data-sim-slider="pork"
+             aria-describedby="sim-footnote-pork">
+      <div class="sim-range-ends">
+        <span>0 g</span><span>60 g</span>
+      </div>
+      <div class="sim-impact">
+        <div class="sim-stat">
+          <span>Baseline emissions/day</span>
+          <strong id="sim-before-pork">—</strong>
+        </div>
+        <div class="sim-stat">
+          <span>Adjusted emissions/day</span>
+          <strong id="sim-after-pork">—</strong>
+        </div>
+      </div>
+      <div class="sim-impact-bar">
+        <span class="sim-impact-fill" id="sim-fill-pork"></span>
+      </div>
+      <p class="sim-delta" id="sim-delta-pork" aria-live="polite">
+        No change
+      </p>
+      <p class="sim-footnote" id="sim-footnote-pork">
+        Estimated kg CO₂e per day, based on grams of protein
+        from this category.
+      </p>
+    </div>
+
     <div class="choice">
       <h3>Would you make this change?</h3>
       <div class="choice-actions">
@@ -83,12 +278,50 @@
       <p class="choice-status" aria-live="polite"></p>
     </div>
   </section>
+
   <section class="protein-section" id="chicken" data-protein="Chicken">
     <h2>Chicken</h2>
     <p class="protein-description">
       Alongside being a complete protein, chicken also provides B vitamins and selenium. Chicken production tends to have a lower environmental impact than beef and pork, but still requires feed, land, and waste management.
     </p>
-    <div class="info-placeholder"></div>
+    <div class="sim-panel" data-sim-source="chicken">
+      <div class="sim-heading">
+        <h3>Adjust chicken consumption</h3>
+        <div class="sim-value">
+          <strong id="sim-value-chicken">—</strong>
+          <span>g protein/day</span>
+        </div>
+      </div>
+      <label for="sim-slider-chicken" class="small">
+        Daily protein from chicken
+      </label>
+      <input id="sim-slider-chicken" type="range" min="0" max="60"
+             step="1" data-sim-slider="chicken"
+             aria-describedby="sim-footnote-chicken">
+      <div class="sim-range-ends">
+        <span>0 g</span><span>60 g</span>
+      </div>
+      <div class="sim-impact">
+        <div class="sim-stat">
+          <span>Baseline emissions/day</span>
+          <strong id="sim-before-chicken">—</strong>
+        </div>
+        <div class="sim-stat">
+          <span>Adjusted emissions/day</span>
+          <strong id="sim-after-chicken">—</strong>
+        </div>
+      </div>
+      <div class="sim-impact-bar">
+        <span class="sim-impact-fill" id="sim-fill-chicken"></span>
+      </div>
+      <p class="sim-delta" id="sim-delta-chicken" aria-live="polite">
+        No change
+      </p>
+      <p class="sim-footnote" id="sim-footnote-chicken">
+        Estimated kg CO₂e per day, based on grams of protein
+        from this category.
+      </p>
+    </div>
     <div class="choice">
       <h3>Would you make this change?</h3>
       <div class="choice-actions">
@@ -99,12 +332,51 @@
       <p class="choice-status" aria-live="polite"></p>
     </div>
   </section>
+
   <section class="protein-section" id="eggs" data-protein="Eggs">
     <h2>Eggs</h2>
     <p class="protein-description">
       Eggs are a complete protein with B vitamins, choline, and selenium. Eggs are a byproduct of chickens so the environmental impact is largely similar to that of chicken.
     </p>
-    <div class="info-placeholder"></div>
+    <div class="sim-panel" data-sim-source="eggs">
+      <div class="sim-heading">
+        <h3>Adjust eggs consumption</h3>
+        <div class="sim-value">
+          <strong id="sim-value-eggs">—</strong>
+          <span>g protein/day</span>
+        </div>
+      </div>
+      <label for="sim-slider-eggs" class="small">
+        Daily protein from eggs
+      </label>
+      <input id="sim-slider-eggs" type="range" min="0" max="60"
+             step="1" data-sim-slider="eggs"
+             aria-describedby="sim-footnote-eggs">
+      <div class="sim-range-ends">
+        <span>0 g</span><span>60 g</span>
+      </div>
+      <div class="sim-impact">
+        <div class="sim-stat">
+          <span>Baseline emissions/day</span>
+          <strong id="sim-before-eggs">—</strong>
+        </div>
+        <div class="sim-stat">
+          <span>Adjusted emissions/day</span>
+          <strong id="sim-after-eggs">—</strong>
+        </div>
+      </div>
+      <div class="sim-impact-bar">
+        <span class="sim-impact-fill" id="sim-fill-eggs"></span>
+      </div>
+      <p class="sim-delta" id="sim-delta-eggs" aria-live="polite">
+        No change
+      </p>
+      <p class="sim-footnote" id="sim-footnote-eggs">
+        Estimated kg CO₂e per day, based on grams of protein
+        from this category.
+      </p>
+    </div>
+
     <div class="choice">
       <h3>Would you make this change?</h3>
       <div class="choice-actions">
@@ -115,12 +387,52 @@
       <p class="choice-status" aria-live="polite"></p>
     </div>
   </section>
+
   <section class="protein-section" id="tofu" data-protein="Tofu">
     <h2>Tofu</h2>
     <p class="protein-description">
       Tofu (made of soybeans) is a high quality plant-based protein and contains all 9 essential amino acids as well as iron and fiber. Soy production requires land use, but not as much as is needed for feed production and animal grazing. This keeps the environmental impact relatively low.
     </p>
-    <div class="info-placeholder"></div>
+
+    <div class="sim-panel" data-sim-source="tofu">
+      <div class="sim-heading">
+        <h3>Adjust tofu consumption</h3>
+        <div class="sim-value">
+          <strong id="sim-value-tofu">—</strong>
+          <span>g protein/day</span>
+        </div>
+      </div>
+      <label for="sim-slider-tofu" class="small">
+        Daily protein from tofu
+      </label>
+      <input id="sim-slider-tofu" type="range" min="0" max="60"
+             step="1" data-sim-slider="tofu"
+             aria-describedby="sim-footnote-tofu">
+      <div class="sim-range-ends">
+        <span>0 g</span><span>60 g</span>
+      </div>
+      <div class="sim-impact">
+        <div class="sim-stat">
+          <span>Baseline emissions/day</span>
+          <strong id="sim-before-tofu">—</strong>
+        </div>
+        <div class="sim-stat">
+          <span>Adjusted emissions/day</span>
+          <strong id="sim-after-tofu">—</strong>
+        </div>
+      </div>
+      <div class="sim-impact-bar">
+        <span class="sim-impact-fill" id="sim-fill-tofu"></span>
+      </div>
+      <p class="sim-delta" id="sim-delta-tofu" aria-live="polite">
+        No change
+      </p>
+      <p class="sim-footnote" id="sim-footnote-tofu">
+        Estimated kg CO₂e per day, based on grams of protein
+        from this category.
+      </p>
+    </div>
+
     <div class="choice">
       <h3>Would you make this change?</h3>
       <div class="choice-actions">
@@ -131,12 +443,51 @@
       <p class="choice-status" aria-live="polite"></p>
     </div>
   </section>
+
   <section class="protein-section" id="peas" data-protein="Peas">
     <h2>Legumes</h2>
     <p class="protein-description">
       Other legumes may be relatively low in some essential amino acids, but still provide fiber, complex carbohydrates, iron, and other essential nutrients. These protein sources tend to have very low greenhouse gas emissions compared to animal protein sources. Main considerations are land use and water use. 
     </p>
-    <div class="info-placeholder"></div>
+    <div class="sim-panel" data-sim-source="peas">
+      <div class="sim-heading">
+        <h3>Adjust legumes consumption</h3>
+        <div class="sim-value">
+          <strong id="sim-value-peas">—</strong>
+          <span>g protein/day</span>
+        </div>
+      </div>
+      <label for="sim-slider-peas" class="small">
+        Daily protein from legumes
+      </label>
+      <input id="sim-slider-peas" type="range" min="0" max="60"
+             step="1" data-sim-slider="peas"
+             aria-describedby="sim-footnote-peas">
+      <div class="sim-range-ends">
+        <span>0 g</span><span>60 g</span>
+      </div>
+      <div class="sim-impact">
+        <div class="sim-stat">
+          <span>Baseline emissions/day</span>
+          <strong id="sim-before-peas">—</strong>
+        </div>
+        <div class="sim-stat">
+          <span>Adjusted emissions/day</span>
+          <strong id="sim-after-peas">—</strong>
+        </div>
+      </div>
+      <div class="sim-impact-bar">
+        <span class="sim-impact-fill" id="sim-fill-peas"></span>
+      </div>
+      <p class="sim-delta" id="sim-delta-peas" aria-live="polite">
+        No change
+      </p>
+      <p class="sim-footnote" id="sim-footnote-peas">
+        Estimated kg CO₂e per day, based on grams of protein
+        from this category.
+      </p>
+    </div>
+
     <div class="choice">
       <h3>Would you make this change?</h3>
       <div class="choice-actions">
@@ -147,12 +498,52 @@
       <p class="choice-status" aria-live="polite"></p>
     </div>
   </section>
+
   <section class="protein-section" id="nuts" data-protein="Nuts">
     <h2>Nuts</h2>
     <p class="protein-description">
-      Nuts are a protein source as well as a source of fiber, vitamin E, and magnesium. The quality of protein varies by nut type. Nuts tend to have far lower greenhouse gas emssions, but some varieties require substatial amounts of irrigation water.
+      Nuts are a protein source as well as a source of fiber, vitamin E, and magnesium. The quality of protein varies by nut type. Nuts tend to have far lower greenhouse gas emissions, but some varieties require substantial amounts of irrigation water.
     </p>
-    <div class="info-placeholder"></div>
+
+    <div class="sim-panel" data-sim-source="nuts">
+      <div class="sim-heading">
+        <h3>Adjust nuts consumption</h3>
+        <div class="sim-value">
+          <strong id="sim-value-nuts">—</strong>
+          <span>g protein/day</span>
+        </div>
+      </div>
+      <label for="sim-slider-nuts" class="small">
+        Daily protein from nuts
+      </label>
+      <input id="sim-slider-nuts" type="range" min="0" max="60"
+             step="1" data-sim-slider="nuts"
+             aria-describedby="sim-footnote-nuts">
+      <div class="sim-range-ends">
+        <span>0 g</span><span>60 g</span>
+      </div>
+      <div class="sim-impact">
+        <div class="sim-stat">
+          <span>Baseline emissions/day</span>
+          <strong id="sim-before-nuts">—</strong>
+        </div>
+        <div class="sim-stat">
+          <span>Adjusted emissions/day</span>
+          <strong id="sim-after-nuts">—</strong>
+        </div>
+      </div>
+      <div class="sim-impact-bar">
+        <span class="sim-impact-fill" id="sim-fill-nuts"></span>
+      </div>
+      <p class="sim-delta" id="sim-delta-nuts" aria-live="polite">
+        No change
+      </p>
+      <p class="sim-footnote" id="sim-footnote-nuts">
+        Estimated kg CO₂e per day, based on grams of protein
+        from this category.
+      </p>
+    </div>
+
     <div class="choice">
       <h3>Would you make this change?</h3>
       <div class="choice-actions">
@@ -173,8 +564,39 @@
     </div>
     <ol class="review-list" id="review-list"></ol>
     <div class="actions"><a class="primary button-link" href="environmental-impacts.html">Continue: environmental impacts</a></div>
+    <div class="sim-overview">
+      <h3>Simulation method</h3>
+
+      <p class="small">
+        Emissions are estimated as (grams of protein per day ÷ 100)
+        × category emissions factor (kg CO₂e per 100 g protein).
+        Baseline values are illustrative assumptions, not measured consumption.
+        The original prototype supplies factors for beef (49.89),
+        chicken (5.70), eggs (4.21) and pulses (0.84).
+        For dairy, pork, tofu and nuts, this expanded demonstration uses
+        approximate category factors (10.82, 7.61, 1.98 and 0.26 respectively),
+        which should be verified against the final selected dataset before
+        publication. Dairy is represented by a cheese-category proxy,
+        legumes by other pulses, and nuts by a simplified proxy.
+        Values are not personalized forecasts.
+      </p>
+
+      <p class="small">
+        Background:
+        <a href="https://ourworldindata.org/environmental-impacts-of-food"
+           target="_blank" rel="noopener noreferrer">
+          Our World in Data — Environmental impacts of food
+        </a>
+        and
+        <a href="https://www.science.org/doi/10.1126/science.aaq0216"
+           target="_blank" rel="noopener noreferrer">
+          Poore &amp; Nemecek (2018)
+        </a>.
+      </p>
+    </div>
   </section>
 </main>
 <script src="info.js"></script>
+<script src="protein-simulator.js"></script>
 </body>
 </html>
